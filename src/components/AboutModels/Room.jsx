@@ -145,5 +145,4 @@ export function Room(props) {
     </group>
   )
 }
-
 useGLTF.preload('/models/Room.glb')
