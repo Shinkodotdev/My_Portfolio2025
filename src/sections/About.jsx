@@ -1,110 +1,70 @@
-import React, { useEffect, useRef } from 'react'
-import AboutExperience from '../components/AboutModels/Aboutexperience.jsx'
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import React, { useEffect, useRef, useState, lazy, Suspense, memo } from "react";
+import "swiper/css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedCounter from "./AnimatedCounter.jsx";
 
-import { words } from '../constants/index.js'
-gsap.registerPlugin(ScrollTrigger)
+const Profile = lazy(() => import("../components/Profile.jsx")); 
+const Introduction = lazy(() => import("../components/Introduction.jsx"));
+const PersonalInfo = lazy(() => import("../components/PersonalInfo.jsx"));
+const Skills = lazy(() => import("../components/Skills.jsx"));
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  const aboutRef = useRef()
+  const titleRef = useRef(null);
+  const [videoStage, setVideoStage] = useState("default");
 
-  useGSAP(() => {
-    const ctx = gsap.context(() => {
-      // Animate the word-by-word text
-      const wordAnim = gsap.fromTo('.about-text h1 span span',
-        { opacity: 0, y: -50 },
-        { opacity: 1, y: 0, stagger: 0.15, duration: 1.5, ease: 'power3.out', paused: true }
-      )
+  useEffect(() => {
+    if (titleRef.current) {
+      gsap.fromTo(
+        titleRef.current,
+        { x: -100, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.in",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+            toggleActions: "play none ",
+            once: true,
+          },
+        }
+      );
+    }
+  }, []);
 
-      ScrollTrigger.create({
-        trigger: '.about-text',
-        start: 'top 80%',
-        onEnter: () => wordAnim.play(),
-        onLeave: () => wordAnim.reverse(),
-        onEnterBack: () => wordAnim.play(),
-        onLeaveBack: () => wordAnim.reverse(),
-      })
+  return (
+    <section
+      id="about"
+      className={`transition-all duration-1000 ${
+        videoStage === "phase2" ? "bg-zinc-900" : "bg-zinc-800"
+      } text-white`}
+    >
+      <div className="title-container text-center px-4 py-6">
+        <h2
+          ref={titleRef}
+          className="text-3xl sm:text-4xl font-bold text-white mb-0 tracking-tight"
+        >
+          About Me
+        </h2>
+      </div>
 
-      // Animate second and third heading
-      const headingsAnim = gsap.fromTo(
-        '.about-text h1:nth-of-type(2), .about-text h1:nth-of-type(3)',
-        { opacity: 0, x: -100 },
-        { opacity: 1, x: 0, duration: 1.2, ease: 'power2.out', paused: true }
-      )
+      <div className="container mx-auto px-4 py-4">
+        <div className="text-center mb-12">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Profile />
+            <PersonalInfo />
+            <Introduction videoStage={videoStage} setVideoStage={setVideoStage} />
+            <Skills />
+          </Suspense>
+          <AnimatedCounter />
+        </div>
+      </div>
+    </section>
+  );
+};
 
-      ScrollTrigger.create({
-        trigger: '.about-text',
-        start: 'top 80%',
-        onEnter: () => headingsAnim.play(),
-        onLeave: () => headingsAnim.reverse(),
-        onEnterBack: () => headingsAnim.play(),
-        onLeaveBack: () => headingsAnim.reverse(),
-      })
-
-      // Animate AboutExperience
-      const experienceAnim = gsap.fromTo('.About-Experience',
-        { opacity: 0, scale: 0.9, y: 100 },
-        { opacity: 1, scale: 1, y: 0, duration: 1.5, ease: 'power3.out', paused: true }
-      )
-
-      ScrollTrigger.create({
-        trigger: '.About-Experience',
-        start: 'top 85%',
-        onEnter: () => experienceAnim.play(),
-        onLeave: () => experienceAnim.reverse(),
-        onEnterBack: () => experienceAnim.play(),
-        onLeaveBack: () => experienceAnim.reverse(),
-      })
-
-      // Animate paragraph
-      const paragraphAnim = gsap.fromTo('.about-p',
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out', paused: true }
-      )
-
-      ScrollTrigger.create({
-        trigger: '.about-p',
-        start: 'top 90%',
-        onEnter: () => paragraphAnim.play(),
-        onLeave: () => paragraphAnim.reverse(),
-        onEnterBack: () => paragraphAnim.play(),
-        onLeaveBack: () => paragraphAnim.reverse(),
-      })
-
-    }, aboutRef)
-
-    return () => ctx.revert()
-  }, [])
-
-return (
-    <section id="about" ref={aboutRef} className="bg-[#1f1f1f] relative w-full min-h-[80vh] md:min-h-[90vh] lg:min-h-screen overflow-hidden flex items-center justify-center py-5 px-10 md:px-20">
-        <div className="flex flex-col md:w-full w-screen md:px-15  mt-0">
-            <div className="flex flex-col">
-                <div className="about-text m-5">
-                    <h1>Shaping
-                        <span className="slide">
-                            <span className="wrapper">
-                            {words.map((word) => (
-                                <span >{word.text}</span>
-                                ))}
-                            </span>
-                        </span>
-                    </h1>
-                    <h1>into Scalable Solutions</h1>
-                    <h1>that Drive Real Impact</h1>
-                </div>
-            </div>       
-        <figure>
-            <div className="About-Experience">
-                <AboutExperience />
-            </div>
-            <p className="about-p text-center text-sm md:text-base lg:text-lg text-white mt-2 max-w-3xl">
-                From identifying challenges to crafting solutions, I believe every problem is an opportunity to innovate, inspire, and build something meaningful.
-            </p>
-        </figure>
-    </div>
-</section>    
-)}
-export default About
+export default memo(About);

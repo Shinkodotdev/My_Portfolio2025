@@ -1,6 +1,5 @@
 import React from 'react';
 import { socialImgs } from '../constants';
-
 const Footer = () => {
   return (
     <footer className="bg-zinc-950 text-white py-8 border-t border-zinc-800 relative">

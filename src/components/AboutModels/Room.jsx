@@ -58,16 +58,7 @@ export function Room(props) {
         <mesh geometry={nodes.Object_60.geometry} material={materials['Material.037']} />
         <mesh geometry={nodes.Object_61.geometry} material={materials['screen.002_0']} />
       </group>
-      <group position={[-1.138, 0.582, -1.746]} rotation={[Math.PI / 2, 0, 0]}>
-        <mesh geometry={nodes.Object_63.geometry} material={materials['Material.014']} />
-        <mesh geometry={nodes.Object_64.geometry} material={materials['Material.015']} />
-        <mesh geometry={nodes.Object_65.geometry} material={materials['Material.016']} />
-        <mesh geometry={nodes.Object_66.geometry} material={materials['Material.036']} />
-      </group>
-      <group position={[-1.511, -0.672, -1.568]} rotation={[0.414, 0.387, -0.164]} scale={0.007}>
-        <mesh geometry={nodes.Object_68.geometry} material={materials['Material.002']} />
-        <mesh geometry={nodes.Object_69.geometry} material={materials['Material.001']} />
-      </group>
+      {/* LAPTOP */}
       <group position={[-1.544, -0.497, -1.642]} rotation={[0, 0.419, 0]} scale={[0.817, 0.875, 0.817]}>
         <mesh geometry={nodes.Object_71.geometry} material={materials['Material.025']} />
         <mesh geometry={nodes.Object_72.geometry} material={materials['Material.025']} />
@@ -84,49 +75,22 @@ export function Room(props) {
         <mesh geometry={nodes.Object_83.geometry} material={materials['stciker-i.001']} />
         <mesh geometry={nodes.Object_84.geometry} material={materials['Material.033']} />
         <mesh geometry={nodes.Object_85.geometry} material={materials['Material.010']} />
-      </group>
-      <group position={[-1.003, -0.691, -1.49]} rotation={[0.062, 0, 0]} scale={[0.064, 0.002, 0.01]}>
-        <mesh geometry={nodes.Object_87.geometry} material={materials['Material.009']} />
-        <mesh geometry={nodes.Object_88.geometry} material={materials['Material.004']} />
-        <mesh geometry={nodes.Object_89.geometry} material={materials['Material.011']} />
-      </group>
-      <group position={[-1.342, -0.306, -1.662]} rotation={[-0.848, -1.143, -0.83]} scale={1.85}>
-        <mesh geometry={nodes.Object_93.geometry} material={materials['Material.008']} />
-        <mesh geometry={nodes.Object_94.geometry} material={materials.Animal_Grey_Vinyl} />
-        <mesh geometry={nodes.Object_95.geometry} material={materials['Material.007']} />
-        <mesh geometry={nodes.Object_96.geometry} material={materials['logo.001']} />
-      </group>
-      <group position={[-1.365, -0.624, -1.667]} rotation={[0.414, 0.387, -0.164]} scale={[0.175, 0.17, 0.122]}>
-        <mesh geometry={nodes.Object_98.geometry} material={materials['Material.032']} />
-        <mesh geometry={nodes.Object_99.geometry} material={materials['Material.006']} />
-        <mesh geometry={nodes.Object_100.geometry} material={materials['Material.036']} />
-      </group>
+      </group>   
+      {/* CABINET */}
       <group position={[-1.653, -1.248, 1.847]} scale={0.147}>
         <mesh geometry={nodes.Object_102.geometry} material={materials['Material.038']} />
         <mesh geometry={nodes.Object_103.geometry} material={materials.White_Wood} />
         <mesh geometry={nodes.Object_104.geometry} material={materials.AR3DMat_Procedural_Realistic_Mirror} />
       </group>
-      <group position={[-0.896, -0.947, -1.756]} scale={0.976}>
-        <mesh geometry={nodes.Object_106.geometry} material={materials['Material.036']} />
-        <mesh geometry={nodes.Object_107.geometry} material={materials['Material.034']} />
-      </group>
+      
       <group position={[-0.853, -0.723, -0.924]} rotation={[0, -1.201, 0]} scale={[0.185, 0.172, 0.185]}>
         <mesh geometry={nodes.Object_109.geometry} material={materials['Material.013']} />
         <mesh geometry={nodes.Object_110.geometry} material={materials['Material.024']} />
         <mesh geometry={nodes.Object_111.geometry} material={materials['Material.026']} />
       </group>
-      <group position={[-1.619, -0.693, -1.019]} rotation={[Math.PI, -1.186, Math.PI]} scale={[0.075, 0.014, 0.054]}>
-        <mesh geometry={nodes.Object_115.geometry} material={materials['Material.021']} />
-        <mesh geometry={nodes.Object_116.geometry} material={materials['Material.022']} />
-      </group>
-      <group position={[-1.522, -0.675, -0.925]} rotation={[0, -0.385, -0.242]} scale={[0.075, 0.014, 0.054]}>
-        <mesh geometry={nodes.Object_118.geometry} material={materials['Material.021']} />
-        <mesh geometry={nodes.Object_119.geometry} material={materials['Material.020']} />
-      </group>
-      <group position={[-0.632, -0.689, -1.617]} rotation={[0, -0.704, 0]} scale={[0.075, 0.014, 0.054]}>
-        <mesh geometry={nodes.Object_121.geometry} material={materials['Material.021']} />
-        <mesh geometry={nodes.Object_122.geometry} material={materials['Material.041']} />
-      </group>
+     
+
+      
       <group position={[1.248, -1.147, -0.71]} scale={[0.75, 0.1, 1]}>
         <mesh geometry={nodes.Object_126.geometry} material={materials.Mattress_02} />
         <mesh geometry={nodes.Object_127.geometry} material={materials.Checker_blanket} />

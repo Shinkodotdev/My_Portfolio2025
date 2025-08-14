@@ -35,42 +35,14 @@ const Testimonials = () => {
               trigger: card,
               start: 'top 85%',
               toggleActions: 'play none none reverse',
-              // markers: true, // Uncomment for debugging
             },
           }
         )
       }
     })
-  }, [testimonials]) // re-run animation when testimonials list changes (e.g. after submit)
+  }, [testimonials]) 
 
-  const handleInputChange = (e) => {
-    const { name, value, files } = e.target
-    if (name === 'imgPath' && files.length > 0) {
-      const imageURL = URL.createObjectURL(files[0])
-      setFormData({ ...formData, imgPath: imageURL })
-    } else {
-      setFormData({ ...formData, [name]: value })
-    }
-  }
-
-  const handleStarClick = (rating) => {
-    setFormData({ ...formData, rating })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (formData.name && formData.review && formData.rating > 0) {
-      setTestimonials([formData, ...testimonials])
-      setFormData({
-        name: '',
-        mentions: '',
-        review: '',
-        imgPath: '',
-        rating: 0
-      })
-    }
-  }
-
+ 
   return (
     <section
       id="testimonials"
@@ -80,7 +52,7 @@ const Testimonials = () => {
         <TitleHeader title="What People Say About Me?" sub="Feedback Highlights" />
 
         {/* Testimonials List */}
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 mb-16">
+        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-0 mb-16">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
@@ -113,61 +85,9 @@ const Testimonials = () => {
           ))}
         </div>
 
-        {/* Review Form */}
-        <div className="review-form bg-zinc-900 border border-zinc-700 rounded-xl shadow-lg p-8 max-w-3xl mx-auto mb-10">
-          <h3 className="text-2xl font-semibold mb-10 text-white">Leave a Review</h3>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              className="p-3 rounded bg-zinc-800 border border-zinc-600 text-white placeholder-gray-400"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="text"
-              name="mentions"
-              placeholder="Your Title or Role (optional)"
-              className="p-3 rounded bg-zinc-800 border border-zinc-600 text-white placeholder-gray-400"
-              value={formData.mentions}
-              onChange={handleInputChange}
-            />
-            <textarea
-              name="review"
-              placeholder="Write your review here..."
-              className="p-3 rounded bg-zinc-800 border border-zinc-600 text-white placeholder-gray-400 min-h-[100px]"
-              value={formData.review}
-              onChange={handleInputChange}
-              required
-            />
-
-            {/* Star Rating */}
-            <div className="flex gap-2 items-center">
-              <span className="text-zinc-400">Your Rating:</span>
-              <div className="flex gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    size={24}
-                    className="cursor-pointer"
-                    fill={i < formData.rating ? '#facc15' : 'none'}
-                    stroke="#facc15"
-                    onClick={() => handleStarClick(i + 1)}
-                  />
-                ))}
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 transition-colors px-6 py-3 rounded text-white font-semibold"
-            >
-              Submit Review
-            </button>
-          </form>
-        </div>
+        
       </div>
+      
     </section>
   )
 }

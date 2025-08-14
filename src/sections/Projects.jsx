@@ -1,75 +1,102 @@
 import React, { useEffect, useRef } from 'react';
-import {projects} from '../constants/index.js'
+import { projects } from '../constants/index.js';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TitleHeader from "../components/TitleHeader";
+import { Link } from "react-router-dom";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const Projects = () => {
   const scrollRef = useRef(null);
-useEffect(() => {
-  const elements = [".project-text, .project-title, .project-card"];
-  elements.forEach(selector => {
+
+  useEffect(() => {
     gsap.fromTo(
-      selector,
-      { y: -100, opacity: 0 },
+      ".project-card",
+      { y: 40, opacity: 0, scale: 0.95 },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
-        stagger: 0.8,
-        ease: "power4.inOut",
+        scale: 1,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: "#projects",
           start: "top 85%",
-          end: "bottom 10%",
-          toggleActions: "play reverse play reverse", 
-        }
+          once: true,
+        },
       }
-    )
-  })
-}, []);
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-    const cardWidth = 370;
-    let scrollPosition = 0;
-    const interval = setInterval(() => {
-      if (!scrollContainer) return;
-        scrollPosition += cardWidth;
-      if (scrollPosition >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-        scrollPosition = 0;
-      }
-
-      scrollContainer.scrollTo({
-        left: scrollPosition,
-        behavior: 'smooth',
-      });
-    }, 5000); 
-
-    return () => clearInterval(interval);
+    );
   }, []);
 
+  const scrollNext = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 350, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section id="projects" className="py-10 bg-zinc-950 text-white px-6">
+    <section id="projects" className="py-35 bg-zinc-950 text-white px-6 relative">
       <div className="max-w-6xl mx-auto">
-        <h2 className="project-text text-4xl font-bold mb-12 text-center">My Projects</h2>
-        <div className=" overflow-x-auto scrollbar-hide">
-          <div ref={scrollRef} className="flex gap-6 snap-x snap-mandatory overflow-x-scroll scroll-smooth pb-4 px-1 scrollbar-hide">
+        <TitleHeader title="Creations" sub="Projects That Showcase My Skills" />
+
+        <div className="relative mt-12">
+          {/* Cards Container */}
+          <div
+            ref={scrollRef}
+            className="flex gap-6 snap-x snap-mandatory overflow-x-auto md:grid md:grid-cols-3 lg:grid-cols-3 scroll-smooth pb-6 px-1 scrollbar-hide"
+          >
             {projects.map((project, idx) => (
-                <div key={idx} className="project-card w-[90%] sm:w-[300px] md:w-[350px] lg:w-[370px] snap-center bg-zinc-900 rounded-xl shadow-md border border-zinc-700 overflow-hidden hover:shadow-lg transition-shadow flex-shrink-0">
-                  <img src={project.image} alt={project.title} className="w-full h-52 object-cover"/>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-                    <p className="text-zinc-400 mb-4 text-sm">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 text-xs text-blue-400 font-mono mb-4">
-                      {project.tech.map((tech, i) => (
-                        <span key={i} className="bg-zinc-800 px-2 py-1 rounded">{tech}</span>
-                      ))}
-                    </div>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="inline-block text-blue-500 hover:underline" > View Code →</a>
-                  </div>
+              <div
+                key={idx}
+                className="project-card w-[90%] sm:w-[300px] md:w-auto snap-center bg-zinc-900 rounded-xl shadow-md border border-zinc-800 overflow-hidden 
+                hover:shadow-lg hover:shadow-blue-500/20 hover:border-blue-500 transition-transform duration-300 hover:scale-[1.02] flex-shrink-0"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-52 object-cover transition-transform duration-500 hover:scale-105"
+                  />
                 </div>
-              ))}
+                <div className="p-6 flex flex-col h-full">
+                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                  <p className="text-zinc-400 mb-4 text-sm flex-grow">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 text-xs font-mono mb-4">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="bg-blue-500/10 text-blue-400 px-2 py-1 rounded border border-blue-400/20"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    View Code →
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
+
+          
+        </div>
+
+        {/* View All Projects Button */}
+        <div className="text-center mt-10">
+          <Link
+            to="/projects"
+            className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300"
+          >
+            View All Projects
+          </Link>
         </div>
       </div>
     </section>
