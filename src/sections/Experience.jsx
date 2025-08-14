@@ -110,14 +110,14 @@ const Experience = () => {
                     </ul>
 
                     {/* Button only on last card */}
-                    {index === expCards.length - 1 && (
+                    {/* {index === expCards.length - 1 && (
                       <a
                         href="/OJT"
                         className="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-7 rounded-full shadow-lg transition-all transform hover:scale-105"
                       >
                         View My OJT
                       </a>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>

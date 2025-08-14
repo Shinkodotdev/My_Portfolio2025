@@ -9,28 +9,10 @@ const ContactModal = lazy(() => import('../components/Modals/ContactModal.jsx'))
 
 const Introduction = ({ videoStage, setVideoStage }) => {
   const videoRef = useRef(null);
-  const videoContainerRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    if (videoContainerRef.current) {
-      gsap.fromTo(
-        videoContainerRef.current,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: 'power2.inOut',
-          scrollTrigger: {
-            trigger: videoContainerRef.current,
-            start: 'top 80%',
-            once: true 
-          }
-        }
-      );
-    }
-
+    
     const video = videoRef.current;
     if (!video) return;
 
@@ -54,7 +36,7 @@ const Introduction = ({ videoStage, setVideoStage }) => {
 
   return (
     <>
-      <div ref={videoContainerRef} className="flex justify-center mb-6">
+      <div className="flex justify-center mb-6">
         <video
           ref={videoRef}
           controls

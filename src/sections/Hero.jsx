@@ -1,17 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
+import React from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import LetterGlitch from "../components/LetterGlitch";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const vantaRef = useRef(null);
-  const vantaEffect = useRef(null);
-  const [isVantaLoaded, setIsVantaLoaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
   useGSAP(() => {
     gsap.fromTo(
       ".hero-text",
@@ -29,53 +25,23 @@ const Hero = () => {
       }
     );
   }, []);
-  useEffect(() => {
-    const node = vantaRef.current;
-    if (!node) return;
-
-    const observer = new IntersectionObserver(
-      async ([entry]) => {
-        if (entry.isIntersecting && !isVantaLoaded) {
-          const [THREE, NET] = await Promise.all([
-            import("three"),
-            import("vanta/dist/vanta.net.min"),
-          ]);
-
-          vantaEffect.current = NET.default({
-            el: node,
-            THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: true,
-            minHeight: 200.0,
-            minWidth: 200.0,
-            scale: 1.0,
-            scaleMobile: 1.0,
-            color: 0x7030ea,
-            backgroundColor: 0x060613,
-            points: 16.0,
-            maxDistance: 17.0,
-            spacing: 30.0,
-          });
-
-          setIsVantaLoaded(true);
-          gsap.to(node, { opacity: 1, duration: 0.4 });
-          setIsLoading(false);
-        }
-      },
-      { rootMargin: "200px" }
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [isVantaLoaded]);
 
   return (
     <section
       id="hero"
-      ref={vantaRef}
-      className="relative w-full min-h-screen flex items-center justify-center opacity-0"
+      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
     >
+      {/* Background glitch effect */}
+      <div className="absolute inset-0 z-0">
+        <LetterGlitch
+          glitchSpeed={50}
+          centerVignette={true}
+          outerVignette={true}
+          smooth={true}
+        />
+      </div>
+
+      {/* Main content */}
       <div className="hero-text relative z-10 text-center text-white px-5 max-w-4xl mx-auto">
         <h1 className="text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-4">
           Welcome to My Portfolio
@@ -83,55 +49,57 @@ const Hero = () => {
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
           I’m{" "}
           <span className="text-white drop-shadow-md">
-            {isVantaLoaded && (
-              <Typewriter
-                words={[
-                  "Mark Joseph O. Iglesia",
-                  "BSIT Graduate - Web Systems Technology",
-                  "Full-Stack Web Developer",
-                  "Problem Solver",
-                  "Backend Developer",
-                  "Frontend Developer",
-                  "Clean Code Advocate",
-                  "Lifelong Learner",
-                  "Tech Explorer",
-                  "Leader",
-                  "Content Creator",
-                  "Critical Thinker",
-                  "Team Collaborator",
-                  "Driven by Passion",
-                ]}
-                loop
-                cursor
-                cursorStyle="_"
-                typeSpeed={70}
-                deleteSpeed={30}
-                delaySpeed={1000}
-              />
-            )}
+            <Typewriter
+              words={[
+                "Mark Joseph O. Iglesia",
+                "BSIT Graduate - Web Systems Technology",
+                "Full-Stack Web Developer",
+                "Problem Solver",
+                "Backend Developer",
+                "Frontend Developer",
+                "Clean Code Advocate",
+                "Lifelong Learner",
+                "Tech Explorer",
+                "Leader",
+                "Content Creator",
+                "Critical Thinker",
+                "Team Collaborator",
+                "Driven by Passion",
+              ]}
+              loop
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+              deleteSpeed={30}
+              delaySpeed={1000}
+            />
           </span>
         </h2>
+
         {/* Buttons */}
         <div className="hero-button mt-8 flex justify-center gap-8">
           <a
             href="./Pages/Projects.jsx"
-            className="px-6 py-3 border-2 border-purple-600 text-purple-100 hover:bg-purple-700 hover:text-white rounded-full transition-all duration-300"
+            className="px-6 py-3 border-2 border-purple-500 text-white bg-purple-700 rounded-full"
           >
             View Projects
           </a>
           <a
             href="/resume.pdf"
             target="_blank"
-            className="px-6 py-3 border-2 border-purple-600 text-purple-100 hover:bg-purple-700 hover:text-white rounded-full transition-all duration-300"
+            className="px-6 py-3 border-2 border-purple-500 text-white bg-purple-700 rounded-full"
           >
             Download Resume
           </a>
         </div>
-        <p className="hero-p text-base md:text-lg mt-6 max-w-xl mx-auto text-gray-400">
+
+        <p className="hero-p text-base md:text-lg mt-6 max-w-xl mx-auto text-gray-100">
           I’m passionate about building clean, user-friendly web apps and
           bringing ideas to life through code.
         </p>
       </div>
+
+      {/* Down arrow */}
       <a
         href="#about"
         title="Learn more"

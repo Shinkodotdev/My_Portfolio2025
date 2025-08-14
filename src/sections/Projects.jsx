@@ -73,14 +73,6 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
-                    View Code →
-                  </a>
                 </div>
               </div>
             ))}
@@ -90,14 +82,14 @@ const Projects = () => {
         </div>
 
         {/* View All Projects Button */}
-        <div className="text-center mt-10">
+        {/* <div className="text-center mt-10">
           <Link
             to="/projects"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300"
           >
             View All Projects
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

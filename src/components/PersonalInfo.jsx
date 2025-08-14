@@ -1,65 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import gsap from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import React from "react";
 const PersonalInfo = () => {
-     const aboutRef = useRef([]);
-      
-    useEffect(() => {
-        aboutRef.current = ['.name-about'];
-      gsap.fromTo(
-          aboutRef.current,
-          { x: -100, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.inOut",
-            stagger: 1,
-            scrollTrigger: {
-              trigger: ".name-about",
-              start: "left 80%",
-              end: "right 20%",
-              toggleActions: "play reverse play reverse",
-            },
-          }
-        );
-        gsap.fromTo(
-          ".name-course-about",
-          { y: 100, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.inOut",
-            stagger: 0.2,
-            scrollTrigger: {
-              trigger: ".name-about",
-              start: "top 80%",
-              end: "bottom 20%",
-              toggleActions: "play reverse play reverse",
-            },
-          }
-        );
-        gsap.fromTo(
-          ".name-p-about",
-          { y: 100, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.inOut",
-            stagger: 0.2,
-            scrollTrigger: {
-              trigger: ".name-course-about",
-              start: "top 80%",
-              end: "bottom 20%",
-              toggleActions: "play reverse play reverse",
-            },
-          }
-        );
-      }, []);
+
 return (
     <div className="about">
         <h2 className="name-about text-4xl font-extrabold mb-1">Mark Joseph O. Iglesia</h2>
