@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { projects } from '../constants/index.js';
+import React, { useEffect, useRef } from "react";
+import { projects } from "../constants/index.js";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TitleHeader from "../components/TitleHeader";
@@ -37,7 +37,10 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-35 bg-zinc-950 text-white px-6 relative">
+    <section
+      id="projects"
+      className="py-35 bg-zinc-950 text-white px-6 relative"
+    >
       <div className="max-w-6xl mx-auto">
         <TitleHeader title="Creations" sub="Projects That Showcase My Skills" />
 
@@ -50,19 +53,29 @@ const Projects = () => {
             {projects.map((project, idx) => (
               <div
                 key={idx}
-                className="project-card w-[90%] sm:w-[300px] md:w-auto snap-center bg-zinc-900 rounded-xl shadow-md border border-zinc-800 overflow-hidden 
-                hover:shadow-lg hover:shadow-blue-500/20 hover:border-blue-500 transition-transform duration-300 hover:scale-[1.02] flex-shrink-0"
+                className="project-card w-[100%] sm:w-[300px] md:w-auto snap-center bg-zinc-900 rounded-xl shadow-md border border-zinc-800 overflow-hidden 
+  hover:shadow-lg hover:shadow-blue-500/20 hover:border-blue-500 transition-transform duration-300 hover:scale-[1.02] flex-shrink-0 flex flex-col"
               >
-                <div className="overflow-hidden">
+                {/* ✅ Image Container with fixed height */}
+                <div className="h-52 overflow-hidden">
+              
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-52 object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                   />
+            
                 </div>
-                <div className="p-6 flex flex-col h-full">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-zinc-400 mb-4 text-sm flex-grow">{project.description}</p>
+
+                {/* ✅ Content */}
+                <div className="p-4 flex flex-col flex-grow">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-zinc-400 mb-4 text-sm flex-grow">
+                    {project.description}
+                  </p>
+
                   <div className="flex flex-wrap gap-2 text-xs font-mono mb-4">
                     {project.tech.map((tech, i) => (
                       <span
@@ -77,19 +90,16 @@ const Projects = () => {
               </div>
             ))}
           </div>
-
-          
         </div>
-
         {/* View All Projects Button */}
-        {/* <div className="text-center mt-10">
+        <div className="text-center mt-10">
           <Link
             to="/projects"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg transition-all duration-300"
           >
             View All Projects
           </Link>
-        </div> */}
+        </div>
       </div>
     </section>
   );

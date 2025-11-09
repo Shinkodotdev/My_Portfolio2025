@@ -7,7 +7,6 @@ const Skills = () => {
 
   return (
     <div className="skills text-center px-4 py-10">
-      {/* Section Title */}
       <h2 className="animation-01 text-3xl sm:text-4xl font-bold text-white mb-3 tracking-tight">
         What I Do
       </h2>
@@ -15,7 +14,6 @@ const Skills = () => {
         Here are the technologies and tools I use to build modern, scalable, and
         responsive web & mobile applications.
       </h3>
-      {/* Skills Grid */}
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6 max-w-5xl mx-auto">
         {skill.map((s, i) => (
           <div
@@ -31,7 +29,9 @@ const Skills = () => {
             <p className="font-medium text-xs sm:text-sm md:text-base text-zinc-200 mb-1">
               {s.name}
             </p>
-            <p className="text-xs text-zinc-400 mt-1">{s.level} Years</p>
+          <p className="text-xs text-zinc-400 mt-1">
+              {s.level} {s.level === 1 ? 'Year' : 'Years'}
+          </p>
           </div>
         ))}
       </div>

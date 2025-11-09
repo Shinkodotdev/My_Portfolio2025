@@ -40,7 +40,7 @@ const socialImgs = [
   { name: "Facebook", imgPath: "/images/logos/facebook.png", link: "https://www.facebook.com/shinkodotdev" },
   { name: "TikTok", imgPath: "/images/logos/tiktok.png", link: "https://www.tiktok.com/@shinkodotdev" },
   { name: "GitHub", imgPath: "/images/logos/github.png", link: "https://github.com/Shinkodotdev" },
-  { name: "LinkedIn", imgPath: "/images/logos/linkedin.png", link: "https://www.linkedin.com/in/iglesia-mark-joseph-0-73ab45222" },
+  { name: "LinkedIn", imgPath: "/images/logos/linkedin.png", link: "www.linkedin.com/in/markiglesiadev" },
 ];
 
 // Projects
@@ -53,11 +53,26 @@ const projects = [
     link: 'https://github.com/Shinkodotdev/barangay-system',
   },
   {
-    title: '3D React Portfolio',
-    description: 'A modern 3D animated portfolio built using React Three Fiber and TailwindCSS.',
-    image: '/images/projects/portfolio.PNG',
-    tech: ['React', 'Three.js', 'Tailwind'],
-    link: 'https://github.com/Shinkodotdev/3d-portfolio',
+    title: 'Monitoring System for Bridge and Infrastructure - DPWH',
+    description: 'A mobile-first system for infrastructure monitoring with data visualization and mapping.',
+    image: '/images/projects/DPWH.PNG',
+    tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Mapbox', 'MySQL', 'Chart.js', 'Vue.js'],
+    link: '/localhost/htdocs/FINALDPWH/index.php',
+  },
+  {
+  title: 'RB Iglesia Rental and Logistics Services',
+  description: 'A comprehensive rental and logistics management system designed for RB Iglesia. It streamlines customer rental processing, equipment tracking, and overall operations management to improve efficiency and accuracy.',
+  image: '/images/projects/Rental.png',
+  tech: ['Python', 'Tkinter', 'MySQL'],
+  link: '/localhost/htdocs/FINALDPWH/index.php',
+  },
+];
+const showcase = [
+  {
+    title: 'Expense & Scheduling Information System with Real-Time Tracking',
+    description: 'A web-based platform for Closed Van fleet operations. Handles employee management, expense tracking, service scheduling, and real-time map tracking.',
+    image: '/images/projects/1.PNG',
+    tech: ['PHP', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'Bootstrap', 'Mapbox'],
   },
   {
     title: 'Monitoring System for Bridge and Infrastructure - DPWH',
@@ -65,6 +80,74 @@ const projects = [
     image: '/images/projects/DPWH.PNG',
     tech: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Mapbox', 'MySQL', 'Chart.js', 'Vue.js'],
     link: '/localhost/htdocs/FINALDPWH/index.php',
+  },
+  {
+  title: 'RB Iglesia Rental and Logistics Services',
+  description: 'A comprehensive rental and logistics management system designed for RB Iglesia. It streamlines customer rental processing, equipment tracking, and overall operations management to improve efficiency and accuracy.',
+  image: '/images/projects/Rental.png',
+  tech: ['Python', 'Tkinter', 'MySQL'],
+
+  },
+  {
+  title: 'Baby Stories Photography Website',
+  description: 'Build a Responsive Photography Website for Baby Stories, showcasing portfolio, services, and contact information.',
+  image: '/images/projects/baby_stories.PNG',
+  tech: ['React', 'ReactBits', 'HTML', 'CSS', 'JavaScript', 'Tailwind CSS'],
+  link: 'https://babystoriesphotography.netlify.app',
+  },
+  {
+  title: 'College Ionic Projects',
+  description: 'Build a Responsive Ionic Projects Website, showcasing various projects and their details.',
+  image: '/images/projects/Ionic.png',
+  tech: ['Ionic', 'Bootstrap', 'HTML', 'CSS', 'JavaScript'],
+  },
+  {
+  title: 'Calculator with Dark Mode and Light Mode',
+  description: 'A simple calculator application with dark mode and light mode toggle functionality including history.',
+  image: '/images/projects/BOA.PNG',
+  tech: ['Python', 'Tkinter'],
+  },
+  {
+  title: 'A Letter to My Love',
+  description: 'A simple HTML page with a heartfelt letter to my love, showcasing my feelings and emotions.',
+  image: '/images/projects/letter.PNG',
+  tech: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+  title: 'Tell a Truth Dice Game',
+  description: 'A simple dice game where players roll a dice and tell a truth based on the question rolled.',
+  image: '/images/projects/tellatruth.PNG',
+  tech: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+  title: 'Philippine Rice Institute Website',
+  description: 'A Website for Philippine Rice Institue that is build with knowledge',
+  image: '/images/projects/Rice_Institute.PNG',
+  tech: ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'PopperJs'],
+  },
+  {
+  title: 'My First Year Portfolio',
+  description: 'As a First year tasked to create my first even portfolio',
+  image: '/images/projects/1stPortfolio.PNG',
+  tech: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+  title: 'ChatBot For 30 Day Fitness',
+  description: '',
+  image: '/images/projects/Chatbot_gym.PNG',
+  tech: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+  title: 'FastFoodPH',
+  description: '',
+  image: '/images/projects/FastfoodPH.PNG',
+  tech: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+  title: 'All I did for Love',
+  description: 'A Website that showcase affection to your love ones',
+  image: '/images/projects/allididforlove.PNG',
+  tech: ['HTML', 'CSS', 'JavaScript'],
   },
 ];
 
@@ -183,4 +266,5 @@ export {
   skill,
   techStack,
   contactCards,
+  showcase,
 };

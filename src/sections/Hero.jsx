@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LetterGlitch from "../components/LetterGlitch";
-
+import { Link } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
@@ -78,14 +78,14 @@ const Hero = () => {
 
         {/* Buttons */}
         <div className="hero-button mt-8 flex justify-center gap-8">
+  <Link
+    to="/projects"
+    className="px-6 py-3 border-2 border-purple-500 text-white bg-purple-700 rounded-full"
+  >
+    View Projects
+  </Link>
           <a
-            href="./Pages/Projects.jsx"
-            className="px-6 py-3 border-2 border-purple-500 text-white bg-purple-700 rounded-full"
-          >
-            View Projects
-          </a>
-          <a
-            href="/resume.pdf"
+            href="/documents/Mark_Joseph_Iglesia_Resume.pdf"
             target="_blank"
             className="px-6 py-3 border-2 border-purple-500 text-white bg-purple-700 rounded-full"
           >
